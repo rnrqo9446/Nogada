@@ -28,6 +28,38 @@
 
     </div>
 </div>
+
+<hr>
+
+    <p>댓글!! {{musical.comments.count}}개</p>
+
+    {% for comment in musical.comments.all %}
+    <div>
+        <p class="bg-danger">{{comment.created_date}}</p>
+        <p class="bg-warning"><strong>{{comment.nickname}}</strong></p>
+        <p class="bg-danger">{{comment.text|linebreaks}}</p>
+
+      
+        <br>
+
+    </div>
+    {% empty %}
+    <p>댓글이 존재하지 않습니다!!!</p>
+    {% endfor %}
+
+    <div class="form-group">
+        <h4>댓글 작성</h4>
+        <form method="POST" action="{% url 'musical_add_comment' musical.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn btn-primary">작성하기!!</button>
+        </form>
+
+    </div>
+
+
+
 </div>
 </div>
 {% endblock %}

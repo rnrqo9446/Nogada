@@ -32,4 +32,9 @@ urlpatterns = [
     path('concert/home/<int:concert_id>/',show.views.concert_detail,name='concert_detail'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
+    path('musical/home/<int:musical_id>/comment/', show.views.musical_add_comment, name = 'musical_add_comment'),
+    path('exhibition/home/<int:exhibition_id>/comment/', show.views.exhibition_add_comment, name = 'exhibition_add_comment'),
+    path('classic/home/<int:classic_id>/comment/', show.views.classic_add_comment, name = 'classic_add_comment'),
+    path('concert/home/<int:concert_id>/comment/', show.views.concert_add_comment, name = 'concert_add_comment'),
+
     ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
